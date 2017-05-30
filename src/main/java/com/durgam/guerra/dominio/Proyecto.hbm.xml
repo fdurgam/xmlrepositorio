@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/05/2017 20:28:36 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.durgam.guerra.dominio.Proyecto" table="PROYECTO">
+        <id name="id" type="java.lang.Long">
+            <column name="proyectoID" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreProyecto" type="java.lang.String">
+            <column name="NOMBREPROYECTO" />
+        </property>
+        <property name="descripcionProyecto" type="java.lang.String">
+            <column name="DESCRIPCIONPROYECTO" />
+        </property>
+        <list name="requisitos" inverse="false" table="REQUISITO" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.durgam.guerra.dominio.Requisito" />
+        </list>
+        <many-to-one name="aplicacion" class="com.durgam.guerra.dominio.GestionRequisito" fetch="join">
+            <column name="APLICACION" />
+        </many-to-one>
+    </class>
+    <class name="com.durgam.guerra.dominio.Requisito">
+     <id name="PROYECTO" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        
+</class>
+    
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/05/2017 00:03:40 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.durgam.guerra.dominio.Requisito" table="REQUISITO" abstract="true">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <discriminator type="string">
+            <column name="DISCR_COL" />
+        </discriminator>
+        <property name="nombre" type="java.lang.String">
+            <column name="NOMBRE" />
+        </property>
+        <property name="necesidad" type="java.lang.String">
+            <column name="NECESIDAD" />
+        </property>
+        <property name="prioridad" type="java.lang.String">
+            <column name="PRIORIDAD" />
+        </property>
+        <property name="riesgo" type="java.lang.String">
+            <column name="RIESGO" />
+        </property>
+        <one-to-one name="estado" class="com.durgam.guerra.dominio.EstadoRequisito" access="field"></one-to-one>
+    </class>
+</hibernate-mapping>
